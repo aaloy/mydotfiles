@@ -1,0 +1,421 @@
+priority -50
+
+# Generic Tags
+snippet %
+{% ${1} %}${2}
+endsnippet
+
+snippet %%
+{% ${1:tag_name} %}
+	${2}
+{% end$1 %}
+endsnippet
+
+snippet {
+{{ ${1} }}${2}
+endsnippet
+
+# Template Tags
+
+snippet autoescape
+{% autoescape ${1:off} %}
+	${2}
+{% endautoescape %}
+endsnippet
+
+snippet block
+{% block ${1} %}
+	${2}
+{% endblock $1 %}
+endsnippet
+
+snippet #
+{# ${1:comment} #}
+endsnippet
+
+snippet comment
+{% comment %}
+	${1}
+{% endcomment %}
+endsnippet
+
+snippet cycle
+{% cycle ${1:val1} ${2:val2} ${3:as ${4}} %}
+endsnippet
+
+snippet debug
+{% debug %}
+endsnippet
+
+snippet extends
+{% extends "${1:base.html}" %}
+endsnippet
+
+snippet filter
+{% filter ${1} %}
+	${2}
+{% endfilter %}
+endsnippet
+
+snippet firstof
+{% firstof ${1} %}
+endsnippet
+
+snippet for
+{% for ${1} in ${2} %}
+	${3}
+{% endfor %}
+endsnippet
+
+snippet empty
+{% empty %}
+	${1}
+endsnippet
+
+snippet if
+{% if ${1} %}
+	${2}
+{% endif %}
+endsnippet
+
+snippet else
+{% else %}
+	${1}
+endsnippet
+
+snippet ifchanged
+{% ifchanged %}${1}{% endifchanged %}
+endsnippet
+
+snippet ifequal
+{% ifequal ${1} ${2} %}
+	${3}
+{% endifequal %}
+endsnippet
+
+snippet ifnotequal
+{% ifnotequal ${1} ${2} %}
+	${3}
+{% endifnotequal %}
+endsnippet
+
+snippet include
+{% include "${1}" %}
+endsnippet
+
+snippet load
+{% load ${1} %}
+endsnippet
+
+snippet now
+{% now "${1:jS F Y H:i}" %}
+endsnippet
+
+snippet regroup
+{% regroup ${1} by ${2} as ${3} %}
+endsnippet
+
+snippet spaceless
+{% spaceless %}${1}{% endspaceless %}
+endsnippet
+
+snippet ssi
+{% ssi ${1} %}
+endsnippet
+
+snippet trans
+{% trans "${1:string}" %}
+endsnippet
+
+snippet url
+{% url ${1} as ${2} %}
+endsnippet
+
+snippet widthratio
+{% widthratio ${1:this_value} ${2:max_value} ${3:100} %}
+endsnippet
+
+snippet with
+{% with ${1} as ${2} %}
+endsnippet
+
+# Template Filters
+
+# Note: Since SnipMate can't determine which template filter you are
+# expanding without the "|" character, these do not add the "|"
+# character.  These save a few keystrokes still.
+
+# Note: Template tags that take no arguments are not implemented.
+
+snippet add
+add:"${1}"
+endsnippet
+
+snippet center
+center:"${1}"
+endsnippet
+
+snippet cut
+cut:"${1}"
+endsnippet
+
+snippet date
+date:"${1}"
+endsnippet
+
+snippet default
+default:"${1}"
+endsnippet
+
+snippet defaultifnone
+default_if_none:"${1}"
+endsnippet
+
+snippet dictsort
+dictsort:"${1}"
+endsnippet
+
+snippet dictsortrev
+dictsortreversed:"${1}"
+endsnippet
+
+snippet divisibleby
+divisibleby:"${1}"
+endsnippet
+
+snippet floatformat
+floatformat:"${1}"
+endsnippet
+
+snippet getdigit
+get_digit:"${1}"
+endsnippet
+
+snippet join
+join:"${1}"
+endsnippet
+
+snippet lengthis
+length_is:"${1}"
+endsnippet
+
+snippet pluralize
+pluralize:"${1}"
+endsnippet
+
+snippet removetags
+removetags:"${1}"
+endsnippet
+
+snippet slice
+slice:"${1}"
+endsnippet
+
+snippet stringformat
+stringformat:"${1}"
+endsnippet
+
+snippet time
+time:"${1}"
+endsnippet
+
+snippet truncatewords
+truncatewords:${1}
+endsnippet
+
+snippet truncatewordshtml
+truncatewords_html:${1}
+endsnippet
+
+snippet urlizetrunc
+urlizetrunc:${1}
+endsnippet
+
+snippet wordwrap
+wordwrap:${1}
+endsnippet
+
+# vim:ft=snippets:
+
+
+
+# Code Skeletons
+
+snippet iform "Imports for forms" b
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+
+from django import forms
+from django.utils.translation import ugettext_lazy as _
+${0}
+endsnippet
+
+snippet imodels "Imports for models" b
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+
+from django.db import models
+from django.utils.translation import ugettext_lazy as _
+endsnippet
+
+snippet iadmin "Import for admin" b
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+
+from django.contrib import admin
+from django.utils.translation import ugettext_lazy as _
+endsnippet
+
+snippet iurl "Import for urls" b
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+
+from django.conf.urls import patterns, url
+
+urlpatterns = patterns('',
+    url(r'^${1:re}/$', ${2:view}, name="${3}"),${0}
+    )
+endsnippet
+
+
+snippet form "base form" b
+class ${1:FormName}(forms.Form):
+    """${2:docstring}"""
+    ${3}
+endsnippet
+
+snippet mform "Model form" b 
+class ${1}Form(ModelForm):
+    """Modelform for $1"""
+
+    class Meta:
+        model = $1
+    $0
+endsnippet
+
+snippet cleanf "cleand field validation" b
+def clean_${1:field}(self):
+    # should raise forms.ValidationError
+    data = self.cleaned_data['$1']
+    ${0}
+    return data
+endsnippet
+
+snippet model "base model" b
+class ${1:ModelName}(models.Model):
+    """${2:docstring}"""
+
+    ${3}
+    
+    class Meta:
+        verbose_name = u"${4}"
+        verbose_name_plural = u"${5}"
+    
+    def __unicode__(self):
+        return self.${6}
+    
+    def save(self, force_insert=False, force_update=False):
+        super($1, self).save(**kwargs)
+    
+    @models.permalink
+    def get_absolute_url(self):
+        return ('${7:view_or_url_name}' ${8})
+endsnippet
+
+
+snippet modeladmin "base model admin" b
+class ${1:ModelName}Admin(admin.ModelAdmin):
+    ${2}
+
+admin.site.register($1, $1Admin)
+endsnippet
+
+snippet r2r "base render to response" b
+return render_to_response('${1:template.html}', {
+        ${2}
+    }${3:, context_instance=RequestContext(request)}
+)
+endsnippet
+
+
+snippet tabularinline "tabular inline class" b
+class ${1:ModelName}Inline(admin.TabularInline):
+    model = $1
+    extra = ${2:3}
+endsnippet
+
+
+snippet stackedinline "stacked inline class" b
+class ${1:ModelName}Inline(admin.StackedInline):
+    model = $1
+    extra = ${2:3}
+endsnippet
+
+
+snippet fview "form view" b
+class ${1:ClassName}(FormView):
+    """${0:docstring for $1}"""
+
+    form_class = ${2:}
+    template_name = '${3:}'
+    success_url = reverse_lazy('${4:url_for_success}')
+
+    def get_context_data(self, **kwargs):
+        context = super($1, self).get_context_data(**kwargs)
+        return context
+
+    def form_valid(self, form):
+        """${6:docstring for $1}"""
+        #!TODO Complete
+        return super($1, self).form_valid(form)
+
+    def form_invalid(self, form):
+        """${7:docstring for $1}"""
+        #!TODO Complete
+        return super($1, self).form_valid(form)
+endsnippet
+
+
+snippet tview "template view" b
+class ${1:ClassName}(TemplateView):
+    template_name = '${2:}'
+
+    def get_context_data(self, **kwargs):
+        context = super($1, self).get_context_data(**kwargs)
+        ${3:}
+        return context
+endsnippet
+
+
+snippet rview "reverse view" b
+class ${1:ClassName}(RedirectView):
+    permanent = ${2:true}
+
+def get_redirect_url(self, **kwargs):
+    return reverse(${3})
+endsnippet
+
+
+snippet lview "list view" b
+class ${1:ClassName}(ListView):
+    model = ${2:Model}
+
+    def get_queryset(self):
+        queryset = ${3:$2.objects.all()}
+        ${4}
+    return queryset
+endsnippet
+
+#localize
+snippet mt "Marc as translatable"
+_(${VISUAL})
+endsnippet
+
+snippet ts "Translatable string"
+_(u"${1:string}")
+endsnippet
+
+snippet tt "surround text as unicode string an make translatable"
+_(u"${VISUAL}")
+endsnippet
+
