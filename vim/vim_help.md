@@ -23,19 +23,19 @@ leader key		,
 
 # Search
 
-grep					,f
-clean search			<Ctrl+l> 
-						,<space>
-fast move				,,gE
-	char right			,,f	
-	char left			,,F
-	before right char	,,t
-	after left char		,,T
-	beggin of work		,,w
-	beggin of workd b	,,b
-	search char			,,s
-	end work			,,e
-						
+	grep					,f
+	clean search			<Ctrl+l> 
+							,<space>
+	fast move				,,gE
+		char right			,,f	
+		char left			,,F
+		before right char	,,t
+		after left char		,,T
+		beggin of work		,,w
+		beggin of workd b	,,b
+		search char			,,s
+		end work			,,e
+							
 # Window
 
 split h					,h
