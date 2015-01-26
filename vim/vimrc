@@ -93,8 +93,13 @@ filetype plugin indent on
 " EasyMotion
 NeoBundle "Lokaltog/vim-easymotion"
 
+" Mercurial wrapper
+"
+NeoBundle 'ludovicchabant/vim-lawrencium'
+
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
+
 NeoBundleCheck
 
 "*****************************************************************************
