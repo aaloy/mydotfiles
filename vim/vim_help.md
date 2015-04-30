@@ -9,15 +9,24 @@ leader key		,
 	Ctrl+P                    	        
 		Open					<Ctrl+P>
 		cycle beteewn modes		<Ctrl+f>
-		go to functions			,fu|
+		go to functions			,fu
 		mark files				<Ctrl+z>
 		opem marked files		<Ctrl+o>
-		clear cache				F5|
+		clear cache				F5
 		open file in a vsplit	<Ctrl+v>
 		open file in a split	<Ctrl+x>
 	set work dir				,.      
 	Open in current dir		,e      
 	Open in tab				,te     
+
+# Move
+
+	To last ed. position	''
+	Middle of screen		M
+	Top of screen			H
+	Bottom of screen		L
+	To corresponding item 	%
+	
 
 # Search
 
@@ -53,6 +62,9 @@ leader key		,
 	
 # Edition
 
+	Toggle case				g~<movement>
+	Uppercase				gU<movement>
+	Lowercase				gu<movement>
 	delete current workd	diw
 	delete within parens	di(
 	delele within "			di"
@@ -86,6 +98,7 @@ leader key		,
 								cs<char/s>
 		Delete surround char	ds'
 								ds"
+		Delete tag pair			dst
 		Surround work			ysiw<char>
 	Tagbar Toogle			F4
 	Close quickfix window	,cw

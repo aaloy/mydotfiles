@@ -1,3 +1,11 @@
 priority -50
 
-extends html, django
+extends html, djangotemplates
+
+snippet static "surround text as static" i
+{% static '${VISUAL}' %}
+endsnippet
+
+snippet sb "marks file as html django" i
+<!-- vim:set filetype=htmldjango: -->
+endsnippet

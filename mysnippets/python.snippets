@@ -658,4 +658,11 @@ ${1:doc}
 `!p snip.rv = triple_quotes(snip)`
 endsnippet
 
+
+snippet get_context_data
+def get_context_data(self, **kwargs):
+    context = super(${1:View}, self).get_context_data(**kwargs)
+    return context
+endsnippet
+
 # vim:ft=snippets:
