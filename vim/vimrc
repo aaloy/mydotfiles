@@ -28,7 +28,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 "*****************************************************************************
 "" NeoBundle install packages
 "*****************************************************************************
-NeoBundle 'scrooloose/nerdtree'
+" NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'kien/ctrlp.vim'
@@ -81,9 +81,9 @@ NeoBundle "scrooloose/syntastic"
 NeoBundle "sjl/gundo.vim"
 
 "" Angular vim
-NeoBundle "burnettk/vim-angular"
-NeoBundle "matthewsimo/angular-vim-snippets"
-call neobundle#end()
+" NeoBundle "burnettk/vim-angular"
+" NeoBundle "matthewsimo/angular-vim-snippets"
+
 
 " Surround
 "
@@ -92,16 +92,25 @@ NeoBundle "tpope/vim-surround"
 filetype plugin indent on
 
 " EasyMotion
-NeoBundle "Lokaltog/vim-easymotion"
+" NeoBundle "Lokaltog/vim-easymotion"
 
 " Mercurial wrapper
 "
 NeoBundle 'ludovicchabant/vim-lawrencium'
 
+" vim-windowswap
+
+NeoBundle 'wesQ3/vim-windowswap'
+NeoBundle 'gcmt/taboo'
+NeoBundle 'mhinz/vim-signify'
+
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
 
 NeoBundleCheck
+
+call neobundle#end()
+
 
 "*****************************************************************************
 "" Basic Setup
@@ -148,7 +157,8 @@ set fileformats=unix,dos,mac
 set backspace=indent,eol,start
 set showcmd
 set shell=/bin/sh
-
+set relativenumber
+set number
 "*****************************************************************************
 "" Visual Settigns
 "*****************************************************************************
@@ -167,30 +177,30 @@ set guioptions=egmrti
 set gfn=Monospace\ 8
 
 if has("gui_running")
-  set guifont="Droid Sans Mono":h10
-  set t_Co=256
-  set hlsearch
-  set clipboard=autoselect
-  set guioptions+=T
-  set toolbar=icons,tooltips
-  if has("gui_mac") || has("gui_macvim")
-    set guifont=Menlo:h12
-    set transparency=7
-  endif
+set guifont="Droid Sans Mono":h10
+set t_Co=256
+set hlsearch
+set clipboard=autoselect
+set guioptions+=T
+set toolbar=icons,tooltips
+if has("gui_mac") || has("gui_macvim")
+set guifont=Menlo:h12
+set transparency=7
+endif
 else
-  let g:CSApprox_loaded = 1
+let g:CSApprox_loaded = 1
 
-  if $COLORTERM == 'gnome-terminal'
-    set term=gnome-256color
-  else
-    if $TERM == 'xterm'
-      set term=xterm-256color
-    endif
-  endif
+if $COLORTERM == 'gnome-terminal'
+set term=gnome-256color
+else
+if $TERM == 'xterm'
+  set term=xterm-256color
+endif
+endif
 endif
 
 if &term =~ '256color'
-  set t_ut=
+set t_ut=
 endif
 
 "" Disable the blinking cursor.
@@ -214,10 +224,25 @@ set titlestring=%F
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\ %{fugitive#statusline()}
 
 let g:airline_theme = 'powerlineish'
-let g:airline_enable_branch = 1
+let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
+
+let g:airline#extensions#ctrlp#color_template = 'insert'
+let g:airline#extensions#ctrlp#color_template = 'normal'
+let g:airline#extensions#ctrlp#color_template = 'visual'
+let g:airline#extensions#ctrlp#color_template = 'replace'
+
+let g:airline#extensions#ctrlp#show_adjacent_modes 	= 1
+let g:airline#extensions#virtualenv#enabled 		= 1
+let g:airline#extensions#windowswap#enabled 		= 1
+let g:airline#extensions#windowswap#indicator_text = 'WS'
+let g:airline#extensions#whitespace#enabled 		= 1
+
+let g:airline#extensions#ctrlspace#enabled 			= 1
+let g:airline#extensions#taboo#enabled 				= 1
+let g:airline#extensions#nrrwrgn#enabled 			= 1
 
 "*****************************************************************************
 "" Abbreviations
@@ -368,7 +393,7 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
 
 " vim-airline
-let g:airline_enable_syntastic = 1
+let g:airline#extensions#syntastic#enabled = 1
 
 "" Remove trailing whitespace on <leader>S
 nnoremap <silent> <leader>S :call TrimWhiteSpace()<cr>:let @/=''<CR>
