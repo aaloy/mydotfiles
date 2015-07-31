@@ -101,9 +101,8 @@ NeoBundle 'ludovicchabant/vim-lawrencium'
 " vim-windowswap
 
 NeoBundle 'wesQ3/vim-windowswap'
-NeoBundle 'gcmt/taboo'
 NeoBundle 'mhinz/vim-signify'
-
+NeoBundle 'jeetsukumaran/vim-buffergator'
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
 
@@ -241,8 +240,9 @@ let g:airline#extensions#windowswap#indicator_text = 'WS'
 let g:airline#extensions#whitespace#enabled 		= 1
 
 let g:airline#extensions#ctrlspace#enabled 			= 1
-let g:airline#extensions#taboo#enabled 				= 1
 let g:airline#extensions#nrrwrgn#enabled 			= 1
+let g:airline#extensions#syntastic#enabled 			= 1
+
 
 "*****************************************************************************
 "" Abbreviations
@@ -265,7 +265,7 @@ let g:NERDTreeShowBookmarks=1
 let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 20
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*/.hg/*
 nnoremap <silent> <F12> :NERDTreeFind<CR>
 noremap <F3> :NERDTreeToggle<CR>
 
@@ -353,10 +353,10 @@ noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 "" ctrlp.vim
 "" apt-get install silversearcher-ag to improve speed
 set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
+set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__,.hg/*
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
 let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
-let g:ctrlp_use_caching = 0
+let g:ctrlp_use_caching = 1
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 noremap <leader>b :CtrlPBuffer<CR>
 let g:ctrlp_open_new_file = 'r'
@@ -374,7 +374,7 @@ else
 endif
 if executable("ag")
 	set grepprg=ag\ --nogroup\ --nocolor
-	let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --ignore ''.git'' --ignore ''.DS_Store'' --ignore ''node_modules'' --hidden -g ""'
+	let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --ignore ''.hg'' --ignore ''.git'' --ignore ''.DS_Store'' --ignore ''node_modules'' --hidden -g ""'
 endif
 
 " snippets
@@ -391,9 +391,6 @@ let g:syntastic_style_error_symbol = '✗'
 let g:syntastic_style_warning_symbol = '⚠'
 let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
-
-" vim-airline
-let g:airline#extensions#syntastic#enabled = 1
 
 "" Remove trailing whitespace on <leader>S
 nnoremap <silent> <leader>S :call TrimWhiteSpace()<cr>:let @/=''<CR>
