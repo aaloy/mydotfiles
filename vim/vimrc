@@ -29,12 +29,12 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 "" NeoBundle install packages
 "*****************************************************************************
 " NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'bling/vim-airline'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'tacahiroy/ctrlp-funky'
 NeoBundle 'FelikZ/ctrlp-py-matcher'
-NeoBundle 'bling/vim-airline'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'sheerun/vim-polyglot'
 NeoBundle 'vim-scripts/grep.vim'
@@ -48,10 +48,6 @@ NeoBundle 'Shougo/vimproc.vim', {
       \    },
       \ }
 NeoBundle 'Shougo/vimshell.vim'
-
-"" Snippets
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'honza/vim-snippets'
 
 "" Color
 NeoBundle 'tomasr/molokai'
@@ -82,21 +78,19 @@ NeoBundle "sjl/gundo.vim"
 
 "" Angular vim
 " NeoBundle "burnettk/vim-angular"
-" NeoBundle "matthewsimo/angular-vim-snippets"
 
 
 " Surround
 "
 NeoBundle "tpope/vim-surround"
 " Required:
-filetype plugin indent on
 
 " EasyMotion
-" NeoBundle "Lokaltog/vim-easymotion"
+" NeoBundle 'Lokaltog/vim-easymotion'
 
 " Mercurial wrapper
 "
-NeoBundle 'ludovicchabant/vim-lawrencium'
+" NeoBundle 'ludovicchabant/vim-lawrencium'
 
 " vim-windowswap
 
@@ -106,6 +100,12 @@ NeoBundle 'jeetsukumaran/vim-buffergator'
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
 
+" Snippets
+
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'honza/vim-snippets'
+" NeoBundle "matthewsimo/angular-vim-snippets"
+
 NeoBundleCheck
 
 call neobundle#end()
@@ -114,6 +114,8 @@ call neobundle#end()
 "*****************************************************************************
 "" Basic Setup
 "*****************************************************************************"
+
+filetype plugin indent on
 
 set t_Co=256
 
